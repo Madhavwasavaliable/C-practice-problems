@@ -1,7 +1,8 @@
 #include<stdio.h>
 // comment
+
 int main(){
-    int integer, n=0, unit = 0, first=0, second=0, third=0, forth=0, a=1, b=0, rem=0, digit=0;;
+    int integer, n=0, unit = 0, first=0, second=0, third=0, forth=0, count=1, num=1, digit_place=0;
     char roman[15];
     scanf("%d",&integer);//1123
 
@@ -13,122 +14,147 @@ int main(){
         }
         if (count==1)
         {
-            first=n%10;
+            forth=n%10;
         }
-    else if (unit ==3)
-    {
-        integer = integer - first*100;
-    }
-    else if (unit==2)
-    {
-        integer = integer - first*10;
-    }
+        if (count==2)
+        {
+            third=n%10;
+        }
+        if (count==3)
+        {
+            second=n%10;
+        }
         if (count==4)
         {
-            if(b==0){
-                break;
-            }
-            if(digit<=a){
-                break;
-            }
-            first = digit%10;
-            digit/=10;
-            //printf("%d\n", first);   
+            first=n%10;
         }
-        
+
         count++;
         unit++;
+        n /= 10;
             
     }
-        if (j == 3){
-            for (int i = 1; i <= first; i++)
-            {
-                printf("C");
-            }
-        
-        }
-        if (j == 2){
-            for (int i = 1; i <= first; i++)
-            {
-                printf("X");
-            }
-        
-        }
-        if (j == 1){
-            for (int i = 1; i <= first; i++)
-            {
-                printf("I");
-            }
-        
-        }   
-    }
+    printf("%d \n%d \n%d \n%d", first, second, third, forth);
+    printf("%d", unit);
 
-    if (first == 4)
+    for (int i = unit; i > 0; i--)
     {
-        if (j == 3){
-            for (int i = 1; i <= first; i++)
-            {
-                printf("CD");
-            }
+        switch (num)
+        {
+        case 1: digit_place = first;
+            break;
+        case 2: digit_place = second;
+            break;
+        case 3: digit_place = third;
+            break;
+        case 4: digit_place = forth;
+            break;
+        default:
+            break;
+        }
+        num++;
         
-        }
-        if (j == 2){
-            for (int i = 1; i <= first; i++)
+        if (digit_place < 4)
+        {
+            switch (i)
             {
-                printf("XL");
+            case 1: 
+                    for (int j = 0; j < digit_place; j++)
+                    {
+                        printf("I");
+                    }  
+                break;
+            case 2: 
+                    for (int j = 0; j < digit_place; j++)
+                    {
+                        printf("X");
+                    }  
+                break;
+            case 3: 
+                    for (int j = 0; j < digit_place; j++)
+                    {
+                        printf("C");
+                    }  
+                break;
+            case 4: 
+                    for (int j = 0; j < digit_place; j++)
+                    {
+                        printf("M");
+                    }  
+                break;
+            
+            default:
+                break;
             }
-        
         }
-        if (j == 1){
-            for (int i = 1; i <= first; i++)
+            else if (digit_place == 4)
             {
-                printf("IV");
+                switch (i)
+                {
+                case 1:
+                        for (int j = 0; j < digit_place; j++)
+                        {
+                            printf("IV");
+                        }
+                    break;
+                case 2:
+                        for (int j = 0; j < digit_place; j++)
+                        {
+                            printf("XL");                
+                        }
+                    break;
+                case 3:
+                        for (int j = 0; j < digit_place; j++)
+                        {
+                            printf("CD");
+                        }
+                    break;
+                default:
+                    break;
+                }
             }
-        
-        }       
-    }
-
-    if (first == 5)
-    {
-        if (j == 3){
-                printf("D");
-            }
-        if (j == 2){
-                printf("L");
-        }
-        if (j == 1){
-                printf("V");
-        }
-    }
-
-    if (first > 5)
-    {
-        if (j == 3){
-            printf("D");
-            for (int i = 1; i <= first; i++)
-            {
-                printf("C");
-            }
-        
-        }
-        if (j == 2){
-            printf("L");
-            for (int i = 1; i <= first; i++)
-            {
-                printf("X");
-            }
-        
-        }
-        if (j == 1){
-            printf("V");
-            for (int i = 1; i <= first; i++)
-            {
-                printf("I");
-            }
-        
-        }
-
-    }
-      b++;
-    }
+                else if (digit_place == 5)
+                {
+                    switch (i)
+                    {
+                    case 1: printf("V");
+                        break;
+                    case 2: printf("L");
+                        break;
+                    case 3: printf("D");
+                        break;
+                    default:
+                        break;
+                    }
+                }
+                    else if (digit_place > 5)
+                    {
+                        switch (i)
+                        {
+                        case 1:
+                                printf("V");
+                                for (int j = 0; j < digit_place - 5; j++)
+                                {
+                                    printf("I");
+                                }
+                            break;
+                        case 2:
+                                printf("L");
+                                for (int j = 0; j < digit_place - 5; j++)
+                                {
+                                    printf("X");
+                                }
+                            break;
+                        case 3:
+                                printf("D");
+                                for (int j = 0; j < digit_place - 5; j++)
+                                {
+                                    printf("C");
+                                }
+                            break;
+                        default:
+                            break;
+                        }
+                    }    
+    }    
 }
