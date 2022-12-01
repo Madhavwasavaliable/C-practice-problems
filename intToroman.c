@@ -8,22 +8,13 @@ int main(){
     n = integer; 
     while (1)
     {
-        if (n<=0)
-        {
+        if(n <= 0){
             break;
         }
-        first = n%10;
-        n/=10;
-        unit++;
-        b=0;
-    }
-    
-    printf("%d\n", unit);
-    printf("%d\n", first);
-    if (unit == 4)
-    {
-     integer = integer - first*1000;   
-    }
+        if (count==1)
+        {
+            first=n%10;
+        }
     else if (unit ==3)
     {
         integer = integer - first*100;
@@ -32,16 +23,7 @@ int main(){
     {
         integer = integer - first*10;
     }
-	while(integer>0){
-		rem=integer%10;
-		integer/=10;
-		digit= digit*10+rem;
-	}
-
-
-
-    for(int j = unit; j > 0; j--){
-            while (1)
+        if (count==4)
         {
             if(b==0){
                 break;
@@ -54,15 +36,10 @@ int main(){
             //printf("%d\n", first);   
         }
         
-    if (first < 4)
-    {
-        if (j == 4){
-            for (int i = 1; i <= first; i++)
-            {
-                printf("M");
-            }
-        
-        }
+        count++;
+        unit++;
+            
+    }
         if (j == 3){
             for (int i = 1; i <= first; i++)
             {
