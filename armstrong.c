@@ -7,7 +7,7 @@ int main() {
     for (int i = 0; i < n; i++)
     {
         rem = n%10;
-        sum = pow(rem,n)
+        sum = pow(rem,n);
         n/=10;
     }
     
